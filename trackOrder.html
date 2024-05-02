@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>track order</title>
+    <style>
+        nav {
+            height: 57px;
+            top: 58px;
+            left: 29px;
+            border-top-style: solid;
+            border-top-color:#E2B3D6;
+        }
+
+        nav ul {
+            margin-right: 110px;
+            margin-top: 15px;
+            margin-bottom: 0px;
+            padding: 0;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline;
+            padding: 0 15px;
+            font-weight: 700px;
+            font-size: 18px;
+            line-height: 38.73px;
+            color: #1E3050;
+        }
+
+        #user-image {
+            display: inline;
+            padding: 0 15px;
+        }
+
+        #basket-icon {
+            position: absolute;
+            margin-top: 10px;
+            margin-right: 20px;
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+        }
+
+        #basket-filler {
+            background-color: #1E3050;
+            position: absolute;
+            margin-top: 9px;
+            margin-right: 10px;
+            margin-left: 18px;
+            width: 15px;
+            height: 9.5px;
+            border-radius: 90%;
+        }
+
+        #basket-counter {
+            color: white;
+            position: absolute;
+            margin-top: -15px;
+            margin-right: 3px;
+            margin-left: 22px;
+            width: 15px;
+            height: 9.5px;
+            border-radius: 90%;
+            font-size: 14px;
+        }
+
+        #basket-icon i {
+            padding: 0 15px;
+            width: 20px;
+            height: 20px;
+            font-size: 18.5px;
+        }
+
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1E3050;
+        }
+
+        nav h1 a {
+            text-decoration: none;
+            color: white;
+            border: white;
+        }
+
+        #project-logo {
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+            background-color: #FF8E00;
+            position: absolute;
+            top: 15px;
+        }
+
+        nav h1 {
+            font-size: 20px;
+            line-height: 29.05px;
+            font-weight: 700px;
+            color: #CE6D46;
+            width: 223px;
+            height: 57px;
+            margin-top: 44px;
+            left: 18px;
+            position: absolute;
+            border: #CE6D46;
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400px;
+            font-style: normal;
+        }
+
+        #orders {
+            width: 75%;
+            margin: 0 auto;
+            margin-top: 250px;
+        }
+
+        #orders hr {
+            margin-top: -10px;
+            color: lightgray;
+        }
+
+        #orders #numOfOrders {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <h1><a href="index.html"><img src="indexlogo.png" width=”256″ height=”256″></a></h1>
+        </div>
+        <ul>
+            <li id=""><a href="trackOrder.html">Track Order</a></li>
+            <li id=""><a>Help</a></li>
+            <a style="color: #1E3050;" onclick="goToLogin()"><img src="user.png" width=”256″ height=”256″></a>
+            <img src="basket0.png" id="basket-counter" width=”256″ height=”256″>
+        </ul>
+    </nav>
+
+    <div id="orders">
+        <div>
+            <h2>MY ORDERS</h2>
+            <hr>
+        </div>
+
+        <div id="numOfOrders">
+            <p id="displayNum"></p>
+            <hr>
+        </div>
+    </div>
+
+    <script src="configuration.js"></script>
+    <script>
+        let host = getHost();
+        viewOrders();
+
+
+        if (!isLoggedIn()) {
+            alert("You need to log in to view your orders. Redirecting you to the signup/login page.");
+            goToLogin();
+        }
+
+        if (hasItem()) {
+            let basketCounter = document.querySelector("#basket-counter");
+            basketCounter.src = "basket1.png";
+        }
+        else {
+            let basketCounter = document.querySelector("#basket-counter");
+            basketCounter.src = "basket0.png";
+        }
+
+        async function goToLogin() {
+            let thisPage = "index.html";
+            saveThePreviousPage(thisPage);
+
+            window.location.href = "login.html";
+        }
+
+        async function viewOrders() {
+            let username = JSON.parse(getTheUsername());
+
+            let response = await fetch(host + "/orders/" + username, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${configuration.token()}`
+                }
+            });
+
+            let result = await response.json();
+            console.log(result.length);
+            if (result.length == 0) {
+                document.getElementById("displayNum").innerHTML = "You have no orders.";
+                return;
+            }
+            else {
+                document.getElementById("displayNum").innerHTML = "You have " + result.length + " orders.";
+            }
+
+            for (let i = 0; i < result.length; i++) {
+                let order = result[i];
+                let orderInformation = document.createElement("div");
+                orderInformation.id = "orderInformation";
+
+                let flowersResponse = await fetch(host + "/flowers", {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": `Bearer ${configuration.token()}`
+                    }
+                });
+
+                let flowers = await flowersResponse.json();
+
+                let flower = flowers.find(f => f.id === order.flowerId);
+                let flowerName = document.createElement("h3");
+                flowerName.textContent = "Flower Name: " + flower.name;
+                orderInformation.appendChild(flowerName);
+
+                let totalOrderCost = document.createElement("p");
+                totalOrderCost.textContent = "Total Order Cost: $" + order.totalCost + ".00";
+                orderInformation.appendChild(totalOrderCost);
+
+                let recipientFirstName = document.createElement("p");
+                recipientFirstName.textContent = "Recipient First Name: " + order.recipientFirstName;
+                orderInformation.appendChild(recipientFirstName);
+
+                let recipientLastName = document.createElement("p");
+                recipientLastName.textContent = "Recipient Last Name: " + order.recipientLastName;
+                orderInformation.appendChild(recipientLastName);
+
+                let orderStatus = document.createElement("p");
+                orderStatus.textContent = "Order Status: " + order.orderStatus.charAt(0).toUpperCase() + order.orderStatus.slice(1).toLowerCase();
+                orderInformation.appendChild(orderStatus);
+
+                let hr = document.createElement("hr");
+                orderInformation.appendChild(hr);
+
+                document.getElementById("orders").appendChild(orderInformation);
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

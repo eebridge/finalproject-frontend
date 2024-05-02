@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        nav {
+            height: 57px;
+            top: 58px;
+            left: 29px;
+            border-top-style: solid;
+            border-top-color:#E2B3D6;
+        }
+
+        nav ul {
+            margin-right: 110px;
+            margin-top: 15px;
+            margin-bottom: 0px;
+            padding: 0;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline;
+            padding: 0 15px;
+            font-weight: 700px;
+            font-size: 18px;
+            line-height: 38.73px;
+            color: #1E3050;
+        }
+
+        #user-image {
+            display: inline;
+            padding: 0 15px;
+        }
+
+        #basket-icon {
+            position: absolute;
+            margin-top: 10px;
+            margin-right: 20px;
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+        }
+
+        #basket-filler {
+            background-color: #1E3050;
+            position: absolute;
+            margin-top: 9px;
+            margin-right: 10px;
+            margin-left: 18px;
+            width: 15px;
+            height: 9.5px;
+            border-radius: 90%;
+        }
+
+        #basket-counter {
+            color: white;
+            position: absolute;
+            margin-top: -15px;
+            margin-right: 3px;
+            margin-left: 22px;
+            width: 15px;
+            height: 9.5px;
+            border-radius: 90%;
+            font-size: 14px;
+        }
+
+        #basket-icon i {
+            padding: 0 15px;
+            width: 20px;
+            height: 20px;
+            font-size: 18.5px;
+        }
+
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1E3050;
+        }
+
+        nav h1 a {
+            text-decoration: none;
+            color: white;
+            border: white;
+        }
+
+        #project-logo {
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+            background-color: #FF8E00;
+            position: absolute;
+            top: 15px;
+        }
+
+        nav h1 {
+            font-size: 20px;
+            line-height: 29.05px;
+            font-weight: 700px;
+            color: #CE6D46;
+            width: 223px;
+            height: 57px;
+            margin-top: 44px;
+            left: 18px;
+            position: absolute;
+            border: #CE6D46;
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400px;
+            font-style: normal;
+
+        }
+
+        .container {
+            width: 20%;
+            top: 50%;
+            margin: 0 auto;
+            margin-top:100px;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(50%);
+        }
+        h2 {
+            position: absolute;
+            width: 20%;
+            margin: 0 auto;
+            margin-top: 180px;
+            margin-left: 745px;
+        }
+        .container2 {
+            width: 20%;
+            top: 50%;
+            margin: 0 auto;
+            margin-top:50px;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(50%);
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        input {
+            padding: 10px;
+            margin: 1px;
+            width: 92.5%;
+            border-radius: 2px;
+            border-color: lightgrey;
+        }
+
+        #switch {
+            display: flex;
+        }
+        button {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+            padding: 15px 15px;
+            cursor: pointer;
+            width: 10%;
+            display: inline;
+            flex:1;
+        }
+
+        .formDiv {
+            margin-top: 10px;
+        }
+
+        p {
+            color: #144C3D;
+            margin-left: 65%;
+            margin-top: 7px;
+        }
+        #row6 button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #144C3D;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        p span {
+            color: seagreen;
+        }
+        #row6 p {
+            margin-top: 10px;
+            margin-left: 0%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <h1><a href="index.html"><img src="indexlogo.png" width=”256″ height=”256″></a></h1>
+        </div>
+        <ul>
+            <li id=""><a href="trackOrder.html">Track Order</a></li>
+            <li id=""><a>Help</a></li>
+            <a style="color: #1E3050;" onclick="goToLogin()"><img src="user.png" width=”256″ height=”256″></a>
+            <img src="basket0.png" id="basket-counter" width=”256″ height=”256″>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div id="switch">
+            <button style="border-color: gray; color: gray;" onclick="window.location.href='register.html'">SIGN
+                UP</button>
+            <button onclick="window.location.href='login.html'">LOG IN</button>
+        </div>
+        <div class="formDiv">
+            <label for="username"><b>Username</b></label>
+            <input type="text" id="username" placeholder="Username" required>
+        </div>
+        <div class="formDiv">
+            <label for="password"><b>Password</b></label>
+            <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <p>Show Password</p>
+        <div id="row6" class="formDiv">
+            <button type="submit" onclick="login()">LOG IN</button>
+            <button type="submit" onclick="logout()">LOG OUT</button>
+        </div>
+    </div>
+
+    <script src="configuration.js"></script>
+    <script>
+        if (hasItem()) {
+            let basketCounter = document.querySelector("#basket-counter");
+            basketCounter.src = "basket1.png";
+        }
+        else {
+            let basketCounter = document.querySelector("#basket-counter");
+            basketCounter.src = "basket0.png";
+        }
+    </script>
+</body>
+
+</html>

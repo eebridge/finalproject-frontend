@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order</title>
+    <style>
+        nav {
+            height: 57px;
+            top: 58px;
+            left: 29px;
+            border-top-style: solid;
+            border-top-color:#E2B3D6;
+        }
+
+        nav ul {
+            margin-right: 110px;
+            margin-top: 15px;
+            margin-bottom: 0px;
+            padding: 0;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline;
+            padding: 0 15px;
+            font-weight: 700px;
+            font-size: 18px;
+            line-height: 38.73px;
+            color: #1E3050;
+        }
+
+        #user-image {
+            display: inline;
+            padding: 0 15px;
+        }
+
+        #basket-icon {
+            position: absolute;
+            margin-top: 10px;
+            margin-right: 20px;
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+        }
+
+        #basket-filler {
+            background-color: #1E3050;
+            position: absolute;
+            margin-top: 9px;
+            margin-right: 10px;
+            margin-left: 18px;
+            width: 15px;
+            height: 9.5px;
+            border-radius: 90%;
+        }
+
+        #basket-counter {
+            color: white;
+            position: absolute;
+            margin-top: -15px;
+            margin-right: 3px;
+            margin-left: 22px;
+            width: 15px;
+            height: 9.5px;
+            border-radius: 90%;
+            font-size: 14px;
+        }
+
+        #basket-icon i {
+            padding: 0 15px;
+            width: 20px;
+            height: 20px;
+            font-size: 18.5px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1E3050;
+        }
+
+        nav h1 a {
+            text-decoration: none;
+            color: white;
+            border: white;
+        }
+
+        #project-logo {
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+            background-color: #FF8E00;
+            position: absolute;
+            top: 15px;
+        }
+
+        nav h1 {
+            font-size: 20px;
+            line-height: 29.05px;
+            font-weight: 700px;
+            color: #CE6D46;
+            width: 223px;
+            height: 57px;
+            margin-top: 44px;
+            left: 18px;
+            position: absolute;
+            border: #CE6D46;
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400px;
+            font-style: normal;
+        }
+        
+        .label {
+            text-align: center;    
+        }
+        
+        .offer {
+            width: 30%;
+            margin: 0 auto;
+            margin-top: 65px;
+            background: #144C3D;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .offer span {
+            font-weight: bold;
+        }
+        
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 15px 20px;
+            margin: 0 10px;
+            border: 2px solid #144C3D;
+            background: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .btn.login {
+            color: #144C3D;
+            font-weight: bold;
+            width: 15.5%;
+        }
+        
+        .btn.signup {
+            color: #144C3D;
+            font-weight: bold;
+            width: 15.5%;
+        }
+
+        .order-container {
+            margin: 0 auto;
+            margin-top: 80px;
+            padding: 20px;
+            width: 60%;
+            border-radius: 10px;
+        }
+
+        #vertical {
+            border-left: 1px solid #ccc;
+            height: 100%;
+            position: absolute;
+            width: 10%;
+        }
+
+        #vertical img {
+            width: 100%;
+            height: auto;
+        }
+
+        #rightDiv {
+            margin-left: 200px;
+            margin-top: -220px;
+        }
+
+        #rightDiv h3 {
+            font-size: 24px;
+            width: 100%;
+            margin-top: 220px;
+        }
+
+        #divider1 {
+            margin-top: 60px;
+        }
+
+        #rightDiv p {
+            margin-top: -10px;
+        }
+
+        #divider2 {
+            margin-top: 20px;
+        }
+
+        h4 {
+            color : grey;
+        }
+
+        .offer {
+            width: 93%;
+            margin: 0 auto;
+            margin-top: 15px;
+            background: #DBE7E6;
+            color: black;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        .offer span {
+            color: #52796F;
+        }
+
+        #total {
+            background-color: #F7F9FC;
+            padding: 5px;
+            margin-top: 70px;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;   
+        }
+
+        .flex-container p {
+            display: inline;
+        }
+
+        .flex-container h6 {
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin: 1px;
+            padding: 1px;
+        }
+
+        .flex-container h5 {
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin: 1px;
+            padding: 1px;
+        }
+
+        .label {
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+
+        .value {
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+
+        .numbers {
+            margin-top: 25px;
+        }
+
+        #orderTotalDiv {
+            margin-top: 25px;
+        }
+
+        #discountLabel {
+            color: #73A696;
+        }
+
+        #discountValue {
+            color: #73A696;
+        }
+
+        .numbers hr {
+            width: 95%;
+            color: lightgray;
+        }
+
+        p span {
+            color: seagreen;
+        }
+
+        #terms {
+            margin-top: 28px;
+            margin-left: 38%;
+        }
+
+        #row6 button {
+            width: 200px;
+            margin-top: 30px;
+            margin-left: 75%;
+            padding: 15px;
+            background-color: #144C3D;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <h1><a href="index.html"><img src="indexlogo.png" width=”256″ height=”256″></a></h1>
+        </div>
+        <ul>
+            <li id=""><a href="trackOrder.html">Track Order</a></li>
+            <li id=""><a>Help</a></li>
+            <a style="color: #1E3050;" onclick="goToLogin()"><img src="user.png" width=”256″ height=”256″></a>
+            <img src="basket0.png" id="basket-counter" width=”256″ height=”256″>
+        </ul>
+    </nav>
+
+    <div class="order-container">
+        <div id="vertical">
+            <img src="" alt="Flowers">
+        </div>
+
+        <div id="rightDiv">
+            <h3 id="theFlowerName"></h3>
+
+            <hr id="divider1">
+
+            <h4>Delivery Date</h4>
+            <p id="deliveryDate"></p>
+            <hr id="divider2">
+
+            <h4>Item Pricing</h4>
+            <p id="itemPrice"></p>
+            <hr id="divider3">
+
+            <h4>Delivery Address</h4>
+            <p id="theRecipientName"></p>
+            <p id="theRecipientAddress"></p>
+            <p id="theRecipientMoreAddress"></p>
+            
+            <div id="total">
+                <div class="offer">
+                    You are saving <span>$10</span> on this order!
+                </div>
+                
+
+                <div class="numbers">
+                    <div class="flex-container">
+                        <p class="label" style="font-weight:bold;">SUBTOTAL:</p>
+                        <p class="value" style="font-weight:bold;" id="subtotal">[$74.00]</p>
+                    </div>
+                    <div class="flex-container">
+                        <p class="label">Delivery:</p>
+                        <p class="value">$25.00</p>
+                    </div>
+                    <div class="flex-container">
+                        <p class="label" id="discountLabel">Delivery Discount:</p>
+                        <p class="value" id="discountValue">-$10.00</p>
+                    </div>
+                    <div class="flex-container">
+                        <p class="label">Tax:</p>
+                        <p class="value">$0.00</p>
+                    </div>
+                    <hr>
+                    <div class="flex-container" id="orderTotalDiv">
+                        <p class="label" style="font-weight:bold;">ORDER TOTAL:</p>
+                        <p class="value" style="font-weight:bold;" id="totalPrice"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="terms">
+                <p>By Clicking "Place Order" you agree to the <span>Terms of Use</span> and <span>Privacy Policy</span></p>
+            </div>
+
+            <div id="row6">
+                <button onclick="submitOrder()" type="submit">PLACE ORDER</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="configuration.js"></script>
+    <script>
+        const host = getHost();
+        let flowerInCart = JSON.parse(getTheItem());
+        console.log(flowerInCart);
+        document.getElementById("theFlowerName").innerHTML = flowerInCart.flowerName;
+        document.getElementById("deliveryDate").innerHTML = flowerInCart.deliveryDate;
+        document.getElementById("itemPrice").innerHTML = "$" + flowerInCart.price + ".00";
+        document.getElementById("subtotal").innerHTML = "$" + flowerInCart.price + ".00";
+        let name = flowerInCart.recipientFirstName + " " + flowerInCart.recipientLastName;
+        document.getElementById("theRecipientName").innerHTML = name;
+        let address = flowerInCart.address;
+        if (flowerInCart.apt !== "") {
+            address += ", " + flowerInCart.apt;
+            document.getElementById("theRecipientAddress").innerHTML = address;
+        }
+        else {
+            document.getElementById("theRecipientAddress").innerHTML = address;
+        }
+        if (hasItem()) {
+            let basketCounter = document.querySelector("#basket-counter");
+            basketCounter.src = "basket1.png";
+        }
+        else {
+            let basketCounter = document.querySelector("#basket-counter");
+            basketCounter.src = "basket0.png";
+        }
+
+        let moreAddress = flowerInCart.city + ", " + flowerInCart.state + " " + flowerInCart.zipcode;
+        document.getElementById("theRecipientMoreAddress").innerHTML = moreAddress;
+
+        if (!isLoggedIn()) {
+            document.getElementById("discountLabel").innerHTML = "";
+            document.getElementById("discountValue").innerHTML = "";
+            document.querySelector(".offer").style.display = "none";
+        }
+
+        if (isLoggedIn()) {
+            let totalPrice = parseInt(flowerInCart.price) + 25 - 10;
+            document.getElementById("totalPrice").innerHTML = "$" + totalPrice + ".00";
+        }
+        else {
+            let totalPrice = parseInt(flowerInCart.price) + 25;
+            document.getElementById("totalPrice").innerHTML = "$" + totalPrice + ".00";
+        }
+        
+        let flowerId = flowerInCart.flowerId;
+
+        getTheImage(flowerId).then((blob) => {
+            let url = URL.createObjectURL(blob);
+            document.querySelector("#vertical img").src = url;
+        });
+        
+        async function getTheImage(flowerId) {
+            let response = await fetch(host + "/flowers/" + flowerId + "/image");
+            let result = await response.blob();
+            return result;
+        }
+
+
+        async function submitOrder() {
+            let username = "";
+            if (isLoggedIn()) {
+                username = JSON.parse(getTheUsername());
+            }
+
+            let flowerId = flowerInCart.flowerId;
+            let purchaseOption = flowerInCart.purchaseOption;
+            let recipientFirstName = flowerInCart.recipientFirstName;
+            let recipientLastName = flowerInCart.recipientLastName;
+            let recipientRelationship = flowerInCart.recipientRelationship;
+            let deliveryDate = flowerInCart.deliveryDate;
+            let deliveryAddress = flowerInCart.address;
+            let deliveryApt = flowerInCart.apt;
+            let deliveryCity = flowerInCart.city;
+            let deliveryState = flowerInCart.state;
+            let deliveryZipcode = flowerInCart.zipcode;
+
+            let totalCost = 0;
+            if (isLoggedIn()) {
+                totalCost = parseInt(flowerInCart.price) + 25 - 10;
+            }
+            else {
+                totalCost = parseInt(flowerInCart.price) + 25;
+            }
+
+            let orderStatus = "submitted";
+
+            let order = {
+                username: username,
+                flowerId: flowerId,
+                purchaseOption: purchaseOption,
+                recipientFirstName: recipientFirstName,
+                recipientLastName: recipientLastName,
+                recipientRelationship: recipientRelationship,
+                deliveryDate: deliveryDate,
+                deliveryAddress: deliveryAddress,
+                deliveryApt: deliveryApt,
+                deliveryCity: deliveryCity,
+                deliveryState: deliveryState,
+                deliveryZipcode: deliveryZipcode,
+                totalCost: totalCost,
+                orderStatus: orderStatus
+            }
+
+            console.log(order);
+
+            let request = await fetch(host + "/order", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(order)
+            });
+
+            let result = await request.json();
+            console.log(result);
+
+            if (request.status === 200) {
+                alert("Order submitted successfully!");
+                removeTheItem();
+                window.location.href = "index.html";
+            }
+            else {
+                alert("Order submission failed. Please try again.");
+            }
+
+        }
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+        nav {
+            height: 57px;
+            top: 58px;
+            left: 29px;
+            border-top-style: solid;
+            border-top-color:#E2B3D6;
+        }
+
+        nav ul {
+            margin-right: 110px;
+            margin-top: 15px;
+            margin-bottom: 0px;
+            padding: 0;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline;
+            padding: 0 15px;
+            font-weight: 700px;
+            font-size: 18px;
+            line-height: 38.73px;
+            color: #1E3050;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1E3050;
+        }
+
+        nav h1 a {
+            text-decoration: none;
+            color: white;
+            border: white;
+        }
+
+        nav h1 {
+            font-size: 20px;
+            line-height: 29.05px;
+            font-weight: 700px;
+            color: #CE6D46;
+            width: 223px;
+            height: 57px;
+            margin-top: 44px;
+            left: 18px;
+            position: absolute;
+            border: #CE6D46;
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400px;
+            font-style: normal;
+
+        }
+        
+        .container-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #F3E1DB; 
+            width: 95%;
+            height: 250px;
+            margin: 0 auto;
+            margin-top: 130px;
+
+        }
+
+        .text-section {
+            flex: 1;
+            padding: 20px;
+            border-right: solid;
+            border-right-color: white;
+            border-width: 7px;
+            height: 100%;
+            margin-left: 10px;
+        }
+
+        .text-section h2 {
+            font-size: 1.5em;
+            margin: 30px 0 10px 0px;
+        }
+
+        .text-section hr {
+            width: 2.5%;
+            margin-left: 0px;
+            border-width: 1.5px;
+            border-color: black;
+            color: black;
+        }
+
+        .text-section p {
+            font-size: 1em;
+            margin: 0;
+        }
+
+        .image-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-display img {
+            height: 100%;
+            width: 40%;
+            object-fit: cover;
+            
+        }
+
+        @media (max-width: 768px) {
+        .container-display {
+            flex-direction: column;
+        }
+        }
+
+        .filter-sort-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #F5F5F5;
+            width: 95%;
+            height: 50px;
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+
+        .sort-group, .filter-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-group {
+            margin-left: 10px;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        select {
+            margin-right: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .filter-sort-container {
+            flex-direction: column;
+            }
+            
+            .filter-group, .sort-group {
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            }
+        
+            select {
+            flex: 1;
+            }
+        }
+
+        .flowers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            width: 98%;
+            height: 100%;
+            margin: 0 auto;
+            margin-top: 25px;
+            gap: 50px;
+
+        }
+
+        .flowers .flower {
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            display: block;
+            position: relative;
+        }
+
+        .flowers .flower span {
+            position:absolute; 
+            width:100%;
+            height:100%;
+            top:0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .flowers .flower img {
+            height: 450px;
+            width: 450px;
+        }
+
+        .flowers .flower h5 {
+            font-size: 1.15em;
+            text-transform: uppercase;
+            margin: 5px 0 0px 0px;
+        }
+
+        .flowers .flower p {
+            font-size: 0.9em;
+            margin: -20px 0 10px 0px;
+            color: #383838;
+            display: inline;
+            padding-bottom: 10px;
+        }
+
+        .flowers .flower h6 {
+            font-size: 1em;
+            margin: -10px 0 10px 5px;
+            display: inline;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <h1><a href="index.html"><img src="indexlogo.png" width=”256″ height=”256″></a></h1>
+        </div>
+        <ul>
+            <li id=""><a href="trackOrder.html">Track Order</a></li>
+            <li id=""><a>Help</a></li>
+            <a style="color: #1E3050;" onclick="goToLogin()"><img src="user.png" width=”256″ height=”256″></a>
+            <img src="basket0.png" id="basket-counter" width=”256″ height=”256″>
+        </ul>
+    </nav>
+
+    <div class="container-display">
+        <div class="text-section">
+            <h2>Send Her Blooms</h2>
+            <hr>
+            <p>She will love! Shop All Mother's Day Flowers and Gifts!</p>
+        </div>
+        <img src="flowerbanner.png" alt="flowerbanner">
+    </div>
+
+    <div class="filter-sort-container">
+        <div class="filter-group">
+            <label>FILTER BY</label>
+            <select id="flowerType">
+                <option value="flowerType">Flower Type</option>
+                <option value="mixed">Mixed</option>
+                <option value="roses">Roses</option>
+                <option value="lilies">Lilies</option>
+                <option value="tulips">Tulips</option>
+                <option value="daises">Daises</option>
+            </select>
+
+            <select id="occasion">
+                <option value="occasion">Occasion</option>
+                <option value="mothersday">Mother's Day</option>
+                <option value="birthday">Birthday</option>
+                <option value="thankyou">Thank You</option>
+            </select>
+
+            <select id="color">
+                <option value="color">Color</option>
+                <option value="mixed">Mixed</option>
+                <option value="red">Red</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="orange">Orange</option>
+            </select>
+        </div>
+
+
+        <div class="sort-group">
+            <label for="sortBy">SORT</label>
+            <select id="sortBy">
+                <option value="price-low-high">Price: Low to High</option>
+                <option value="price-high-low">Price: High to Low</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="flowers">
+        <div class="flower"></div>
+    </div>
+    <script src="configuration.js"></script>
+    <script>
+        let host = getHost();
+        let flowers = [];
+        displayTheFlowers();
+        if (hasItem()) {
+            let basketCounter = document.querySelector("#basket-counter");
+            basketCounter.src = "basket1.png";
+        }
+        else {
+            let basketCounter = document.querySelector("#basket-counter");
+            basketCounter.src = "basket0.png";
+        }
+
+        async function displayTheFlowers() {
+            if (flowers.length === 0) {
+                flowers = await getAll();
+            }
+
+            let flowerDisplay = document.getElementsByClassName("flowers")[0];
+            flowerDisplay.innerHTML = "";
+
+            for (let flower of flowers) {
+                let flowerDiv = document.createElement("div");
+                flowerDiv.classList.add("flower");
+
+                flowerDiv.setAttribute("data-type", flower.type.toLowerCase());
+                flowerDiv.setAttribute("data-occasion", flower.occasion.toLowerCase());
+                flowerDiv.setAttribute("data-color", flower.color.toLowerCase());
+
+                flowerDiv.setAttribute("data-price", flower.subscriptionPrice);
+                flowerDiv.setAttribute("data-normal-price", flower.price);
+
+                flowerDiv.setAttribute("data-name", flower.name);
+                flowerDiv.setAttribute("data-id", flower.id);
+
+                let link = document.createElement("a");
+                link.href = "addToBasket.html?flowerId=" + flower.id + "&flowerName=" + flower.name + "&flowerNormalPrice=" + flower.price + "&flowerPrice=" + flower.subscriptionPrice;
+
+                let span = document.createElement("span");
+                link.appendChild(span);
+                flowerDiv.appendChild(link);
+
+
+                let image = document.createElement("img");
+                image.src = URL.createObjectURL(await getTheImage(flower.id));
+                image.alt = flower.name;
+
+                flowerDiv.appendChild(image);
+
+                let name = document.createElement("h5");
+                name.textContent = flower.name;
+                flowerDiv.appendChild(name);
+
+                let text = document.createElement("p");
+                text.textContent = "from";
+                flowerDiv.appendChild(text);
+
+                let price = document.createElement("h6");
+                price.textContent = "$" + flower.subscriptionPrice;
+                flowerDiv.appendChild(price);
+
+                flowerDisplay.appendChild(flowerDiv);
+            }
+
+        }
+
+        async function getAll() {
+            return fetch(host + "/flowers")
+                .then((response) => {
+                    return response.json();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return [];
+                });
+        }
+
+        async function getTheImage(flowerId) {
+            let response = await fetch(host + "/flowers/" + flowerId + "/image");
+            let result = await response.blob();
+            return result;
+        }
+
+        let flowerTypeDropdown = document.getElementById("flowerType");
+        let occasionDropdown = document.getElementById("occasion");
+        let colorDropdown = document.getElementById("color");
+
+        async function filterFlowers() {
+            let selectedFlowerType = flowerTypeDropdown.value.toLowerCase();
+            let selectedOccasion = occasionDropdown.value.toLowerCase();
+            let selectedColor = colorDropdown.value.toLowerCase();
+            selectedFlowerType = selectedFlowerType.replace(" ", "");
+            selectedOccasion = selectedOccasion.replace(" ", "");
+            selectedColor = selectedColor.replace(" ", "");
+            console.log(selectedFlowerType);
+            console.log(selectedOccasion);
+            console.log(selectedColor);
+
+
+            const flowerItems = document.querySelectorAll(".flower");
+
+            flowerItems.forEach(flower => {
+                const flowerType = flower.getAttribute("data-type");
+                const occasion = flower.getAttribute("data-occasion");
+                const color = flower.getAttribute("data-color");
+                if ((selectedFlowerType === "flowertype" || selectedFlowerType === flowerType) &&
+                    (selectedOccasion === "occasion" || selectedOccasion === occasion) &&
+                    (selectedColor === "color" || selectedColor === color)) {
+                    flower.style.display = '';
+                }
+                else {
+                    flower.style.display = 'none';
+                }
+
+
+            });
+        }
+
+        flowerTypeDropdown.addEventListener("change", filterFlowers);
+        occasionDropdown.addEventListener("change", filterFlowers);
+        colorDropdown.addEventListener("change", filterFlowers);
+
+        let sortByDropdown = document.getElementById("sortBy");
+
+        sortByDropdown.addEventListener("change", async function () {
+            let selectedSort = sortByDropdown.value;
+
+            const flowerItems = document.querySelectorAll(".flower");
+            const flowerDisplay = document.getElementsByClassName("flowers")[0];
+
+            if (selectedSort === "price-low-high") {
+                const sortedFlowerItems = Array.from(flowerItems).sort((a, b) => {
+                    const priceA = parseFloat(a.getAttribute("data-price"));
+                    const priceB = parseFloat(b.getAttribute("data-price"));
+                    return priceA - priceB;
+                });
+
+                flowerDisplay.innerHTML = "";
+                sortedFlowerItems.forEach(flower => {
+                    flowerDisplay.appendChild(flower);
+                });
+            }
+            else {
+                const sortedFlowerItems = Array.from(flowerItems).sort((a, b) => {
+                    const priceA = parseFloat(a.getAttribute("data-price"));
+                    const priceB = parseFloat(b.getAttribute("data-price"));
+                    return priceB - priceA;
+                });
+
+                flowerDisplay.innerHTML = "";
+                sortedFlowerItems.forEach(flower => {
+                    flowerDisplay.appendChild(flower);
+                });
+            }
+
+
+
+
+        });
+
+        async function addToBasket(element) {
+            let flowerId = element.getAttribute("data-id");
+            let flowerName = element.getAttribute("data-name");
+            let flowerNormalPrice = element.getAttribute("data-normal-price");
+            let flowerPrice = element.getAttribute("data-price");
+
+            location.href = "addToBasket.html?flowerId=" + flowerId + "&flowerName=" + flowerName + "&flowerNormalPrice=" + flowerNormalPrice + "&flowerPrice=" + flowerPrice;
+        }
+
+        async function goToLogin() {
+            let thisPage = "index.html";
+            saveThePreviousPage(thisPage);
+
+            window.location.href = "login.html";
+        }
+
+    </script>
+
+</body>
+</html>

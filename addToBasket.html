@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add to basket</title>
+    <style>
+        nav {
+            height: 57px;
+            top: 58px;
+            left: 29px;
+            border-top-style: solid;
+            border-top-color:#E2B3D6;
+        }
+
+        nav ul {
+            margin-right: 110px;
+            margin-top: 15px;
+            margin-bottom: 0px;
+            padding: 0;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline;
+            padding: 0 15px;
+            font-weight: 700px;
+            font-size: 18px;
+            line-height: 38.73px;
+            color: #1E3050;
+        }
+
+        #user-image {
+            display: inline;
+            padding: 0 15px;
+        }
+
+        #basket-icon {
+            position: absolute;
+            margin-top: 10px;
+            margin-right: 20px;
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+        }
+
+        #basket-filler {
+            background-color: #1E3050;
+            position: absolute;
+            margin-top: 9px;
+            margin-right: 10px;
+            margin-left: 18px;
+            width: 15px;
+            height: 9.5px;
+            border-radius: 90%;
+        }
+
+        #basket-counter {
+            color: white;
+            position: absolute;
+            margin-top: -15px;
+            margin-right: 3px;
+            margin-left: 22px;
+            width: 15px;
+            height: 9.5px;
+            border-radius: 90%;
+            font-size: 14px;
+        }
+
+        #basket-icon i {
+            padding: 0 15px;
+            width: 20px;
+            height: 20px;
+            font-size: 18.5px;
+        }
+
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1E3050;
+        }
+
+        nav h1 a {
+            text-decoration: none;
+            color: white;
+            border: white;
+        }
+
+        #project-logo {
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+            background-color: #FF8E00;
+            position: absolute;
+            top: 15px;
+        }
+
+        nav h1 {
+            font-size: 20px;
+            line-height: 29.05px;
+            font-weight: 700px;
+            color: #CE6D46;
+            width: 223px;
+            height: 57px;
+            margin-top: 44px;
+            left: 18px;
+            position: absolute;
+            border: #CE6D46;
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400px;
+            font-style: normal;
+
+        }
+
+        .product-container {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin: 0 auto;
+            margin-top: 150px;
+            margin-left: 15%;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            display: block;
+            width: 600px;
+            height: 600px;
+        }
+        
+        .details-container {
+            padding-left: 20px;
+            max-width: 50%;
+            margin-left: 30px;
+        }
+        
+        .details-container h1 {
+            font-size: 2.5em;
+            margin-left: 200px;
+            margin-top: -10px;
+        }
+        
+        .details-container .delivery-date {
+            margin: 20px 0;
+            margin-top: 50px;
+        }
+
+        .details-container .delivery-date label {
+            margin: 20px 0;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+
+        
+        .details-container .delivery-date input[type=date] {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .details-container h2 {
+            font-size: 18px;
+        }
+        
+        .details-container .purchasing-options {
+            border: 1px solid #cccccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .details-container .purchasing-options .option1 {
+            background-color: #F7F9FC;
+            width: 100%;
+            padding: 20px;
+            margin-left: -20px;
+            margin-top: -20px;
+        }
+
+        .details-container .purchasing-options .option1 label {
+            font-size: 18px;
+        }
+
+        .details-container .purchasing-options .option2 {
+            width: 100%;
+            padding: 20px;
+            margin-left: -20px;
+            margin-top: -20px;
+        }
+
+        .details-container .purchasing-options .option2 label {
+            font-size: 18px;
+            margin-top: 40px;
+        }
+
+        .details-container hr {
+            width: 75%;
+            margin-top: 10px;
+            margin-left: 25px;
+        }
+
+        .details-container .purchasing-options label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .details-container .price {
+            font-weight: bold;
+        }
+        
+        .subscription-details {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        
+        .add-to-basket {
+            background-color: #154B3C;
+            color: white;
+            padding: 20px 20px;
+            border: none;
+            cursor: pointer;
+            width: 108%;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+            flex-direction: column;
+            }
+            .details-container {
+            max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <h1><a href="index.html"><img src="indexlogo.png" width=”256″ height=”256″></a></h1>
+        </div>
+        <ul>
+            <li id=""><a href="trackOrder.html">Track Order</a></li>
+            <li id=""><a>Help</a></li>
+            <a style="color: #1E3050;" onclick="goToLogin()"><img src="user.png" width=”256″ height=”256″></a>
+            <img src="basket0.png" id="basket-counter" width=”256″ height=”256″>
+        </ul>
+    </nav>
+
+    <div class="product-container">
+        <div class="image-container">
+            <img src="" alt="Flowers" />
+        </div>
+        <div class="details-container">
+            <div class="delivery-date">
+                <label for="deliveryDate">DELIVERY DATE*</label>
+                <input type="date" id="deliveryDate" name="deliveryDate" placeholder="Select a Date">
+            </div>
+            <h2>PURCHASING OPTIONS*</h2>
+            <div class="purchasing-options">
+                <div class="option1">
+                    <label for="subscription">
+                        <input type="radio" id="subscription" name="purchaseOption">
+                        Start a Subscription: <span id="subscriptionPrice" class="price">$52 + free shipping</span>
+                        <hr>
+                    </label>
+                    <ul class="subscription-details">
+                        <li><span class="price">Best Value:</span> Up to 30% off + free shipping on subscription
+                            deliveries.</li>
+                        <li><span class="price">Flexible:</span> Pick your flowers, date & recipient every month, or set
+                            it & forget it.</li>
+                        <li><span class="price">No Obligations:</span> Skip as often as you like. Cancel anytime.</li>
+                    </ul>
+                </div>
+                <div class="option2">
+                    <label for="one-time">
+                        <input type="radio" id="one-time" name="purchaseOption">
+                        One time purchase: <span id="normalPrice" class="price">$74</span>
+                    </label>
+                </div>
+            </div>
+            <button class="add-to-basket" onclick="addToBasket()">ADD TO BASKET</button>
+        </div>
+    </div>
+
+    <script src="configuration.js"></script>
+    <script>
+        const host = getHost();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const flowerId = urlParams.get('flowerId');
+        const flowerName = urlParams.get('flowerName');
+        const flowerNormalPrice = urlParams.get('flowerNormalPrice');
+        const flowerPrice = urlParams.get('flowerPrice');
+
+        let flowerNameToDisplay = document.createElement("h1");
+        flowerNameToDisplay.innerHTML = flowerName;
+        document.querySelector(".details-container").prepend(flowerNameToDisplay);
+
+        document.querySelector("#subscriptionPrice").innerHTML = "$" + flowerPrice + " + free shipping";
+        document.querySelector("#normalPrice").innerHTML = "$" + flowerNormalPrice;
+
+        getTheImage(flowerId).then((blob) => {
+            let url = URL.createObjectURL(blob);
+            document.querySelector(".image-container img").src = url;
+        });
+
+
+
+        async function getTheImage(flowerId) {
+            let response = await fetch(host + "/flowers/" + flowerId + "/image");
+            let result = await response.blob();
+            return result;
+        }
+
+        async function addToBasket() {
+            let deliveryDate = document.querySelector("#deliveryDate").value;
+            let purchaseOption = document.querySelector('input[name="purchaseOption"]:checked');
+
+            if (deliveryDate === "" || purchaseOption === "" || purchaseOption === null || deliveryDate === null) {
+                alert("You must select a delivery date and a purchase option to add to basket. Please try again.");
+                return;
+            }
+            if (deliveryDate < new Date().toISOString().split('T')[0]) {
+                alert("You must select a delivery date that is in the future. Please try again.");
+                return;
+            }
+
+            let price = purchaseOption.id === "subscription" ? flowerPrice : flowerNormalPrice;
+
+            let item = {
+                flowerId: flowerId,
+                flowerName: flowerName,
+                deliveryDate: deliveryDate,
+                purchaseOption: purchaseOption.id,
+                price: price
+            }
+            saveTheItem(item);
+            if (hasItem()) {
+                let basketCounter = document.querySelector("#basket-counter");
+                basketCounter.src = "basket1.png";
+            }
+            else {
+                let basketCounter = document.querySelector("#basket-counter");
+                basketCounter.src = "basket0.png";
+            }
+
+            saveThePreviousPage("addToBasket.html");
+            if (isLoggedIn()) {
+                window.location.href = "deliveryLoggedIn.html";
+            }
+            else {
+                window.location.href = "deliveryNotLoggedIn.html";
+            }
+
+
+
+        }
+
+        async function goToLogin() {
+            let thisPage = "index.html";
+            saveThePreviousPage(thisPage);
+
+            window.location.href = "login.html";
+        }
+
+
+    </script>
+</body>
+
+</html>
